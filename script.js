@@ -6,6 +6,13 @@ window.addEventListener('load', (event) => {
             const destination = document.getElementById('container');
             let sortedAstronauts = [];
             json.sort((a,b) => (a.hoursInSpace>b.hoursInSpace) ?1 :-1)
+            json.sort(function(a,b) {
+                if(a.hoursInSpace > b.hoursInSpace){
+                    return 1;
+                } else {
+                    return -1;
+                }
+            })
             /*for (let astronautIndex in json) {
                 if (sortedAstronauts.length<1){
                     sortedAstronauts.push(json[astronautIndex]);
@@ -13,7 +20,7 @@ window.addEventListener('load', (event) => {
                     if(json[astronautIndex].hoursInSpace < )
                 }
             }*/
-            
+
             for(astronautIndex in json){
                 console.log(json[astronautIndex]);
                 destination.innerHTML += `<div class='astronaut'>
@@ -33,6 +40,10 @@ window.addEventListener('load', (event) => {
                     astronautActive.style.color = "green";
                 }
                 };
+            let numberAstronauts = json.length;
+            console.log(json.length);
+            let astronautCount = document.getElementById('astronautCount');
+            astronautCount.innerHTML += `${numberAstronauts}`;
 
         });
     });
